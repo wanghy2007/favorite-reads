@@ -1,4 +1,4 @@
-package com.moonbase.favoritereads.favoritereads;
+package com.moonbase.nt.favoritereads;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
