@@ -1,12 +1,10 @@
 package com.moonbase.nt.favoritereads.domain;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,13 +12,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Book {
-
+public class Author {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String title;
-    @OneToMany(mappedBy = "book")
-    private List<Author> authors;
+    private String firstName;
+    private String lastName;
+    @ManyToOne
+    private Book book;
 }

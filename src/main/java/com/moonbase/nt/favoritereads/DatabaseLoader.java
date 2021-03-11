@@ -1,6 +1,10 @@
 package com.moonbase.nt.favoritereads;
 
+import java.util.ArrayList;
+
+import com.moonbase.nt.favoritereads.domain.Author;
 import com.moonbase.nt.favoritereads.domain.Book;
+import com.moonbase.nt.favoritereads.repository.AuthorRepository;
 import com.moonbase.nt.favoritereads.repository.BookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +15,12 @@ import org.springframework.stereotype.Component;
 public class DatabaseLoader implements CommandLineRunner {
 
     private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
 
     @Autowired
-    public DatabaseLoader(BookRepository bookRepository) {
+    public DatabaseLoader(BookRepository bookRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
     }
 
     @Override
@@ -22,8 +28,14 @@ public class DatabaseLoader implements CommandLineRunner {
         {
             Book book = new Book();
             book.setTitle("Good riddance");
-            book.setAuthor("Lipman");
             this.bookRepository.save(book);
+            {
+                Author author = new Author();
+                author.setFirstName("Todd");
+                author.setLastName("Strasser");
+                author.setBook(book);
+                this.authorRepository.save(author);
+            }
         }
     }
 
