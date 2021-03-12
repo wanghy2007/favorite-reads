@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +21,6 @@ public class Book {
     private long id;
 
     private String title;
-    @OneToMany(mappedBy = "book")
-    private Set<BookAuthor> bookAuthors;
+    @ManyToMany
+    private Set<Author> authors;
 }
